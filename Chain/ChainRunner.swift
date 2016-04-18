@@ -4,7 +4,7 @@
 //  Copyright © 2016 Sean Henry. All rights reserved.
 //
 
-import Foundation
+import Swift
 
 public class ChainRunner<T, U> {
 

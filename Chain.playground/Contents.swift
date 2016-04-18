@@ -1,6 +1,5 @@
 //: # Build the Chain framework first
 
-import Foundation
 import UIKit
 import Chain
 
@@ -45,9 +44,7 @@ class Delay<PassedType>: PassiveLink<PassedType> {
 
     override func main(done: () -> ()) {
         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5) * Int64(NSEC_PER_SEC))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            done()
-        })
+        dispatch_after(time, dispatch_get_main_queue(), done)
     }
 }
 
