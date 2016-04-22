@@ -13,8 +13,13 @@ public class Link<InitialType, ResultType>: InitialLink<InitialType> {
 
     public override init() {}
 
-    override func finish() {
-        next?.initial = result
+    public func finish(result result: ResultType) {
+        next?.initial = .Success(result)
+        next?.run()
+    }
+
+    public func finish(error error: ErrorType) {
+        next?.initial = .Failure(error)
         next?.run()
     }
 }

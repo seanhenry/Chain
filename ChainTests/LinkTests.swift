@@ -10,13 +10,11 @@ import XCTest
 class LinkTests: XCTestCase {
 
     var link: Link<String, Int>!
-    var partiallyMockedLink: PartialMockLink<String, Int>!
     var mockedNext: MockLink<Int, String>!
     
     override func setUp() {
         super.setUp()
         link = Link()
-        partiallyMockedLink = PartialMockLink()
         mockedNext = MockLink()
         link.next = mockedNext
     }
@@ -27,42 +25,43 @@ class LinkTests: XCTestCase {
         let link = Link<String, String>()
         XCTAssertEqual(link.result.error as? ChainError, .NoResultValue)
     }
-    
-    // MARK: - finish
-    
-    func test_finish_shouldSetNextInitialValueToResultValue() {
-        link.result = .Success(123)
-        finish()
-        XCTAssertTrue(mockedNext.initial.isSuccessWithResult(link.result.result))
+
+    // MARK: - finish(result:)
+
+    func test_finishResult_shouldPassResult() {
+        finish(result: 123)
+        XCTAssertTrue(mockedNext.initial.isSuccessWithResult(123))
     }
 
-    func test_finish_shouldRunNextLink() {
-        finish()
+    func test_finishResult_shouldRunNext() {
+        finish(result: 456)
+        XCTAssertTrue(mockedNext.didCallRun)
+    }
+    
+    // MARK: - finish(error:)
+    
+    func test_finishError_shouldPassError() {
+        finish(error: Error.Some)
+        XCTAssertEqual(mockedNext.initial.error as? Error, Error.Some)
+    }
+
+    func test_finishError_shouldRunNext() {
+        finish(error: Error.Some)
         XCTAssertTrue(mockedNext.didCallRun)
     }
 
     // MARK: - Helpers
 
-    func callRun() {
-        partiallyMockedLink.run()
+    enum Error: ErrorType {
+        case Some
     }
 
-    func finish() {
-        link.finish()
-    }
-}
-
-class PartialMockLink<InitialType, ResultType>: Link<InitialType, ResultType> {
-
-    var didCallMain = false
-    override func run() {
-        didCallMain = true
-        finish()
+    func finish(result result: Int) {
+        link.finish(result: result)
     }
 
-    var didCallFinish = false
-    override func finish() {
-        didCallFinish = true
+    func finish(error error: ErrorType) {
+        link.finish(error: error)
     }
 }
 

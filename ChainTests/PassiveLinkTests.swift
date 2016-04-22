@@ -10,10 +10,13 @@ import XCTest
 class PassiveLinkTests: XCTestCase {
     
     var link: PassiveLink<String>!
+    var mockedNext: MockLink<String, String>!
     
     override func setUp() {
         super.setUp()
+        mockedNext = MockLink()
         link = PassiveLink()
+        link.next = mockedNext
     }
     
     // MARK: - initial
@@ -21,5 +24,18 @@ class PassiveLinkTests: XCTestCase {
     func test_initial_shouldSetResult() {
         link.initial = .Success("some")
         XCTAssertTrue(link.result.isSuccessWithResult(link.initial.result))
+    }
+
+    // MARK: - finish
+
+    func test_finish_shouldSetInitialOnNext() {
+        link.initial = .Success("hurrah")
+        link.finish()
+        XCTAssertTrue(link.next!.initial.isSuccessWithResult(link.result.result))
+    }
+
+    func test_finish_shouldRunNext() {
+        link.finish()
+        XCTAssertTrue(mockedNext.didCallRun)
     }
 }

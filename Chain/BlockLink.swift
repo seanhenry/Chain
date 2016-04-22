@@ -15,6 +15,6 @@ class BlockLink<InitialType>: Link<InitialType, ()> {
 
     override func run() {
         block(initial)
-        finish()
+        finish(result: ())
     }
 }

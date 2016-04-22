@@ -13,5 +13,4 @@ public protocol Runnable: class {
 protocol RunnableLink: class {
     var previous: RunnableLink? { get }
     func run()
-    func finish()
 }

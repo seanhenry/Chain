@@ -81,9 +81,7 @@ class ChainTests: XCTestCase {
     class TestStringLink: Link<String, String> {
 
         override func run() {
-            initial = .Success("hurrah")
-            result = initial
-            finish()
+            finish(result: "hurrah")
         }
     }
     
@@ -95,8 +93,8 @@ class ChainTests: XCTestCase {
         }
 
         override func run() {
-            result = .Success(String(initial.result!))
-            finish()
+            let string = String(initial.result!)
+            finish(result: string)
         }
     }
 

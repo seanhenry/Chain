@@ -50,7 +50,7 @@ class BlockLinkTests: XCTestCase {
             super.init(block: block)
         }
         var didCallFinish = false
-        override func finish() {
+        override func finish(result result: ()) {
             didCallFinish = true
         }
     }
