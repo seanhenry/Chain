@@ -11,7 +11,7 @@ class BlockLinkTests: XCTestCase {
 
     var didCallBlock = false
     var didCallDone = false
-    var block: ((String) -> ())!
+    var block: ((Result<String, ErrorType>) -> ())!
     var link: BlockLink<String>!
 
     override func setUp() {
@@ -22,7 +22,7 @@ class BlockLinkTests: XCTestCase {
             self.didCallBlock = true
         }
         link = BlockLink<String>(block: block)
-        link.initial = "howdy"
+        link.initial = .Success("howdy")
     }
     
     // MARK: - main

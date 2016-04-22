@@ -21,6 +21,13 @@ class LinkTests: XCTestCase {
         link.next = mockedNext
     }
 
+    // MARK: - result
+
+    func test_result_shouldBeNoResultTypeError() {
+        let link = Link<String, String>()
+        XCTAssertEqual(link.result.error as? ChainError, .NoResultValue)
+    }
+
     // MARK: - run
 
     func test_run_shouldCallRun() {
@@ -42,9 +49,9 @@ class LinkTests: XCTestCase {
     // MARK: - finish
     
     func test_finish_shouldSetNextInitialValueToResultValue() {
-        link.result = 123
+        link.result = .Success(123)
         finish()
-        XCTAssertEqual(mockedNext.initial, link.result)
+        XCTAssertTrue(mockedNext.initial.isSuccessWithResult(link.result.result))
     }
 
     func test_finish_shouldRunNextLink() {

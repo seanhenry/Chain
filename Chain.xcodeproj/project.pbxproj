@@ -19,6 +19,7 @@
 		14706CB71CC2933500FBD876 /* Chain.h in Headers */ = {isa = PBXBuildFile; fileRef = 14706CB61CC2933500FBD876 /* Chain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14706CBE1CC2933500FBD876 /* Chain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14706CB31CC2933500FBD876 /* Chain.framework */; };
 		14706CCE1CC2939100FBD876 /* Runnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14706CCD1CC2939100FBD876 /* Runnable.swift */; };
+		14DC6EC71CCAB13A009CB76B /* InitialLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		14706CBD1CC2933500FBD876 /* ChainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		14706CC41CC2933500FBD876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14706CCD1CC2939100FBD876 /* Runnable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Runnable.swift; sourceTree = "<group>"; };
+		14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialLinkTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				14078A731CC29AD300523FB1 /* PassiveLinkTests.swift */,
 				14078A771CC29B5E00523FB1 /* BlockLinkTests.swift */,
 				14078A7B1CC29DCB00523FB1 /* ChainTests.swift */,
+				14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */,
 			);
 			path = ChainTests;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				14078A7C1CC29DCB00523FB1 /* ChainTests.swift in Sources */,
 				14078A721CC2963100523FB1 /* LinkTests.swift in Sources */,
 				14078A741CC29AD300523FB1 /* PassiveLinkTests.swift in Sources */,
+				14DC6EC71CCAB13A009CB76B /* InitialLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,7 +19,7 @@ class PassiveLinkTests: XCTestCase {
     // MARK: - initial
     
     func test_initial_shouldSetResult() {
-        link.initial = "some"
-        XCTAssertEqual(link.result, link.initial)
+        link.initial = .Success("some")
+        XCTAssertTrue(link.result.isSuccessWithResult(link.initial.result))
     }
 }

@@ -53,7 +53,7 @@ class ChainTests: XCTestCase {
     func test_Chain_canLinkStringLinks() {
         let expectation = expectationWithDescription("")
         Chain(TestStringLink()).then(TestStringLink()).finally { result in
-            XCTAssertEqual(result, "hurrah")
+            XCTAssertEqual(result.result, "hurrah")
             expectation.fulfill()
         }.run()
         waitForExpectationsWithTimeout(5, handler: nil)
@@ -62,7 +62,7 @@ class ChainTests: XCTestCase {
     func test_Chain_canLinkDifferentTypes_andPassiveLinks() {
         let expectation = expectationWithDescription("")
         Chain(IntToString(5)).then(PassString()).finally { result in
-            XCTAssertEqual(result, "5")
+            XCTAssertEqual(result.result, "5")
             expectation.fulfill()
         }.run()
         waitForExpectationsWithTimeout(5, handler: nil)
@@ -81,7 +81,7 @@ class ChainTests: XCTestCase {
     class TestStringLink: Link<String, String> {
 
         override func run(done: () -> ()) {
-            initial = "hurrah"
+            initial = .Success("hurrah")
             result = initial
             done()
         }
@@ -91,11 +91,11 @@ class ChainTests: XCTestCase {
 
         init(_ value: Int) {
             super.init()
-            initial = value
+            initial = .Success(value)
         }
 
         override func run(done: () -> ()) {
-            result = String(initial)
+            result = .Success(String(initial.result!))
             done()
         }
     }

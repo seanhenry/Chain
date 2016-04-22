@@ -26,7 +26,7 @@ public class Chain<InitialType, ResultType>: Runnable {
         return self
     }
 
-    public func finally(block: (ResultType) -> ()) -> Runnable {
+    public func finally(block: (Result<ResultType, ErrorType>) -> ()) -> Runnable {
         let blockLink = BlockLink(block: block)
         last.next = blockLink
         return self

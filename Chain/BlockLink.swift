@@ -8,8 +8,8 @@ import Swift
 
 class BlockLink<InitialType>: Link<InitialType, ()> {
 
-    let block: (InitialType -> ())
-    init(block: (InitialType) -> ()) {
+    let block: (Result<InitialType, ErrorType> -> ())
+    init(block: (Result<InitialType, ErrorType>) -> ()) {
         self.block = block
     }
 
