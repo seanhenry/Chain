@@ -16,8 +16,6 @@
 		14078A7A1CC29B6D00523FB1 /* BlockLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A791CC29B6D00523FB1 /* BlockLink.swift */; };
 		14078A7C1CC29DCB00523FB1 /* ChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A7B1CC29DCB00523FB1 /* ChainTests.swift */; };
 		14078A7E1CC29E3100523FB1 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A7D1CC29E3100523FB1 /* Chain.swift */; };
-		14078A801CC29EBE00523FB1 /* ChainRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A7F1CC29EBE00523FB1 /* ChainRunner.swift */; };
-		14078A821CC29F0E00523FB1 /* ChainRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A811CC29F0E00523FB1 /* ChainRunnerTests.swift */; };
 		14706CB71CC2933500FBD876 /* Chain.h in Headers */ = {isa = PBXBuildFile; fileRef = 14706CB61CC2933500FBD876 /* Chain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14706CBE1CC2933500FBD876 /* Chain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14706CB31CC2933500FBD876 /* Chain.framework */; };
 		14706CCE1CC2939100FBD876 /* Runnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14706CCD1CC2939100FBD876 /* Runnable.swift */; };
@@ -43,8 +41,6 @@
 		14078A791CC29B6D00523FB1 /* BlockLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockLink.swift; sourceTree = "<group>"; };
 		14078A7B1CC29DCB00523FB1 /* ChainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainTests.swift; sourceTree = "<group>"; };
 		14078A7D1CC29E3100523FB1 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
-		14078A7F1CC29EBE00523FB1 /* ChainRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainRunner.swift; sourceTree = "<group>"; };
-		14078A811CC29F0E00523FB1 /* ChainRunnerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainRunnerTests.swift; sourceTree = "<group>"; };
 		14706CB31CC2933500FBD876 /* Chain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14706CB61CC2933500FBD876 /* Chain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chain.h; sourceTree = "<group>"; };
 		14706CB81CC2933500FBD876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 				14078A751CC29AE900523FB1 /* PassiveLink.swift */,
 				14078A791CC29B6D00523FB1 /* BlockLink.swift */,
 				14078A7D1CC29E3100523FB1 /* Chain.swift */,
-				14078A7F1CC29EBE00523FB1 /* ChainRunner.swift */,
 			);
 			path = Chain;
 			sourceTree = "<group>";
@@ -114,7 +109,6 @@
 				14078A731CC29AD300523FB1 /* PassiveLinkTests.swift */,
 				14078A771CC29B5E00523FB1 /* BlockLinkTests.swift */,
 				14078A7B1CC29DCB00523FB1 /* ChainTests.swift */,
-				14078A811CC29F0E00523FB1 /* ChainRunnerTests.swift */,
 			);
 			path = ChainTests;
 			sourceTree = "<group>";
@@ -230,7 +224,6 @@
 				14078A7A1CC29B6D00523FB1 /* BlockLink.swift in Sources */,
 				14078A701CC295FA00523FB1 /* Link.swift in Sources */,
 				14078A761CC29AE900523FB1 /* PassiveLink.swift in Sources */,
-				14078A801CC29EBE00523FB1 /* ChainRunner.swift in Sources */,
 				14078A7E1CC29E3100523FB1 /* Chain.swift in Sources */,
 				14078A6E1CC295A800523FB1 /* InitialLink.swift in Sources */,
 				14706CCE1CC2939100FBD876 /* Runnable.swift in Sources */,
@@ -245,7 +238,6 @@
 				14078A7C1CC29DCB00523FB1 /* ChainTests.swift in Sources */,
 				14078A721CC2963100523FB1 /* LinkTests.swift in Sources */,
 				14078A741CC29AD300523FB1 /* PassiveLinkTests.swift in Sources */,
-				14078A821CC29F0E00523FB1 /* ChainRunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

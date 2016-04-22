@@ -23,7 +23,7 @@ class LinkTests: XCTestCase {
 
     // MARK: - run
 
-    func test_run_shouldCallMain() {
+    func test_run_shouldCallRun() {
         callRun()
         XCTAssertTrue(partiallyMockedLink.didCallMain)
     }
@@ -67,7 +67,7 @@ class PartialMockLink<InitialType, ResultType>: Link<InitialType, ResultType> {
 
     var didCallMain = false
     var done: (() -> ())?
-    override func main(done: () -> ()) {
+    override func run(done: () -> ()) {
         didCallMain = true
         self.done = done
     }

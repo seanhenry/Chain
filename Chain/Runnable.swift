@@ -6,9 +6,13 @@
 
 import Swift
 
-protocol Runnable: class {
-    var previous: Runnable? { get }
-    func main(done: () -> ())
-    func finish()
+public protocol Runnable: class {
     func run()
+}
+
+protocol RunnableLink: class {
+    var previous: RunnableLink? { get }
+    func run()
+    func run(done: () -> ())
+    func finish()
 }

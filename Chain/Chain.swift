@@ -6,7 +6,7 @@
 
 import Swift
 
-public class Chain<InitialType, ResultType> {
+public class Chain<InitialType, ResultType>: Runnable {
 
     let last: Link<InitialType, ResultType>
 
@@ -20,23 +20,27 @@ public class Chain<InitialType, ResultType> {
         return Chain<ResultType, T>(link)
     }
 
-    public func finally(link: InitialLink<ResultType>) -> ChainRunner<InitialType, ResultType> {
+    public func finally(link: InitialLink<ResultType>) -> Runnable {
         link.previous = last
         last.next = link
-        return ChainRunner(chain: self)
+        return self
     }
 
-    public func finally(block: (ResultType) -> ()) -> ChainRunner<InitialType, ResultType> {
+    public func finally(block: (ResultType) -> ()) -> Runnable {
         let blockLink = BlockLink(block: block)
         last.next = blockLink
-        return ChainRunner(chain: self)
+        return self
     }
 
-    func findFirst() -> Runnable {
-        var previous: Runnable = last
+    func findFirst() -> RunnableLink {
+        var previous: RunnableLink = last
         while let p = previous.previous {
             previous = p
         }
         return previous
+    }
+
+    public func run() {
+        findFirst().run()
     }
 }

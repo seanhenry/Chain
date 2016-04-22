@@ -13,7 +13,7 @@ class BlockLink<InitialType>: Link<InitialType, ()> {
         self.block = block
     }
 
-    override func main(done: () -> ()) {
+    override func run(done: () -> ()) {
         block(initial)
         done()
     }

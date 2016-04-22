@@ -10,11 +10,11 @@ import XCTest
 class ChainTests: XCTestCase {
 
     var chain: Chain<String, String>!
-    var first: Link<String, String>!
+    var first: MockLink<String, String>!
 
     override func setUp() {
         super.setUp()
-        first = Link()
+        first = MockLink()
         chain = Chain(first)
     }
 
@@ -68,11 +68,19 @@ class ChainTests: XCTestCase {
         waitForExpectationsWithTimeout(5, handler: nil)
     }
 
+    // MARK: - run
+
+    func test_run_shouldRunFirstLink() {
+        let chain = self.chain.then(Link<String, String>()).then(Link<String, String>()).finally { _ in }
+        chain.run()
+        XCTAssertTrue(first.didCallRun)
+    }
+
     // MARK: - Helpers
 
     class TestStringLink: Link<String, String> {
 
-        override func main(done: () -> ()) {
+        override func run(done: () -> ()) {
             initial = "hurrah"
             result = initial
             done()
@@ -86,7 +94,7 @@ class ChainTests: XCTestCase {
             initial = value
         }
 
-        override func main(done: () -> ()) {
+        override func run(done: () -> ()) {
             result = String(initial)
             done()
         }
@@ -94,7 +102,7 @@ class ChainTests: XCTestCase {
 
     class PassString: PassiveLink<String> {
 
-        override func main(done: () -> ()) {
+        override func run(done: () -> ()) {
             done()
         }
     }

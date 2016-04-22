@@ -28,19 +28,19 @@ class BlockLinkTests: XCTestCase {
     // MARK: - main
     
     func test_main_shouldCallBlock() {
-        main()
+        callRun()
         XCTAssertTrue(didCallBlock)
     }
 
     func test_main_shouldCallDone() {
-        main()
+        callRun()
         XCTAssertTrue(didCallDone)
     }
 
     // MARK: - Helpers
 
-    func main() {
-        link.main {
+    func callRun() {
+        link.run {
             self.didCallDone = true
         }
     }

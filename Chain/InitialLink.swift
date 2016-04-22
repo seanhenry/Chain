@@ -6,15 +6,15 @@
 
 import Swift
 
-public class InitialLink<InitialType>: Runnable {
+public class InitialLink<InitialType>: RunnableLink {
 
     public var initial: InitialType!
-    var previous: Runnable?
+    var previous: RunnableLink?
 
-    public func main(done: () -> ()) { }
+    public func run(done: () -> ()) { }
 
     func run() {
-        main { [unowned self] in
+        run { [unowned self] in
             self.finish()
         }
     }
