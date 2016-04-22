@@ -8,7 +8,10 @@ import Swift
 
 public class InitialLink<InitialType>: RunnableLink {
 
-    public var initial: Result<InitialType, ErrorType> = .Failure(Error.NoInitialValue)
+    public var initialValue: InitialType! {
+        return initial.result
+    }
+    var initial: Result<InitialType, ErrorType> = .Failure(Error.NoInitialValue)
     var previous: RunnableLink?
     public func run() { }
     public func finish(error error: ErrorType) { }

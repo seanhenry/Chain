@@ -21,4 +21,15 @@ class InitialLinkTests: XCTestCase {
     func test_initial_shouldBeNoInitialTypeError() {
         XCTAssertEqual(link.initial.error as? Error, .NoInitialValue)
     }
+
+    // MARK: - initialValue
+
+    func test_initialValue() {
+        link.initial = .Success("initial")
+        XCTAssertEqual(link.initialValue, "initial")
+    }
+
+    func test_initialValue_shouldReturnNil_whenInitialIsError() {
+        XCTAssertNil(link.initialValue)
+    }
 }
