@@ -22,6 +22,7 @@
 		14DC6EC71CCAB13A009CB76B /* InitialLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */; };
 		14DC6ECA1CCAC0D9009CB76B /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6EC91CCAC0D9009CB76B /* TestError.swift */; };
 		14DC6ECD1CCAC4C7009CB76B /* MockLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6ECC1CCAC4C7009CB76B /* MockLink.swift */; };
+		14DC6ED11CCAC5E9009CB76B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6ED01CCAC5E9009CB76B /* Error.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialLinkTests.swift; sourceTree = "<group>"; };
 		14DC6EC91CCAC0D9009CB76B /* TestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
 		14DC6ECC1CCAC4C7009CB76B /* MockLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLink.swift; sourceTree = "<group>"; };
+		14DC6ED01CCAC5E9009CB76B /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				14078A751CC29AE900523FB1 /* PassiveLink.swift */,
 				14078A791CC29B6D00523FB1 /* BlockLink.swift */,
 				14078A7D1CC29E3100523FB1 /* Chain.swift */,
+				14DC6ED01CCAC5E9009CB76B /* Error.swift */,
 			);
 			path = Chain;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DC6ED11CCAC5E9009CB76B /* Error.swift in Sources */,
 				14078A7A1CC29B6D00523FB1 /* BlockLink.swift in Sources */,
 				14078A701CC295FA00523FB1 /* Link.swift in Sources */,
 				14078A761CC29AE900523FB1 /* PassiveLink.swift in Sources */,

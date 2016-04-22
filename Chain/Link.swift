@@ -8,7 +8,7 @@ import Foundation
 
 public class Link<InitialType, ResultType>: InitialLink<InitialType> {
 
-    public var result: Result<ResultType, ErrorType> = .Failure(ChainError.NoResultValue)
+    public var result: Result<ResultType, ErrorType> = .Failure(Error.NoResultValue)
     var next: InitialLink<ResultType>?
 
     public override init() {}

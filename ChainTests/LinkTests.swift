@@ -23,7 +23,7 @@ class LinkTests: XCTestCase {
 
     func test_result_shouldBeNoResultTypeError() {
         let link = Link<String, String>()
-        XCTAssertEqual(link.result.error as? ChainError, .NoResultValue)
+        XCTAssertEqual(link.result.error as? Error, .NoResultValue)
     }
 
     // MARK: - finish(result:)
