@@ -16,7 +16,7 @@ public class PassiveLink<PassedType>: Link<PassedType, PassedType> {
         }
     }
 
-    func finish() {
+    public func finish() {
         next?.initial = result
         next?.run()
     }
