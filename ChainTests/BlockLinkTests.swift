@@ -32,16 +32,26 @@ class BlockLinkTests: XCTestCase {
         XCTAssertTrue(didCallBlock)
     }
 
-    func test_main_shouldCallDone() {
+    func test_main_shouldCallFinish() {
+        let mockedLink = MockBlockLink(block: block)
+        link = mockedLink
         callRun()
-        XCTAssertTrue(didCallDone)
+        XCTAssertTrue(mockedLink.didCallFinish)
     }
 
     // MARK: - Helpers
 
     func callRun() {
-        link.run {
-            self.didCallDone = true
+        link.run()
+    }
+
+    class MockBlockLink: BlockLink<String> {
+        override init(block: (Result<String, ErrorType>) -> ()) {
+            super.init(block: block)
+        }
+        var didCallFinish = false
+        override func finish() {
+            didCallFinish = true
         }
     }
 }

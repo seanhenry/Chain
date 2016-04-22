@@ -80,10 +80,10 @@ class ChainTests: XCTestCase {
 
     class TestStringLink: Link<String, String> {
 
-        override func run(done: () -> ()) {
+        override func run() {
             initial = .Success("hurrah")
             result = initial
-            done()
+            finish()
         }
     }
     
@@ -94,16 +94,16 @@ class ChainTests: XCTestCase {
             initial = .Success(value)
         }
 
-        override func run(done: () -> ()) {
+        override func run() {
             result = .Success(String(initial.result!))
-            done()
+            finish()
         }
     }
 
     class PassString: PassiveLink<String> {
 
-        override func run(done: () -> ()) {
-            done()
+        override func run() {
+            finish()
         }
     }
 }

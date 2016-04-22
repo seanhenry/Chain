@@ -27,24 +27,6 @@ class LinkTests: XCTestCase {
         let link = Link<String, String>()
         XCTAssertEqual(link.result.error as? ChainError, .NoResultValue)
     }
-
-    // MARK: - run
-
-    func test_run_shouldCallRun() {
-        callRun()
-        XCTAssertTrue(partiallyMockedLink.didCallMain)
-    }
-
-    func test_run_shouldCallFinish_whenDone() {
-        callRun()
-        partiallyMockedLink.done?()
-        XCTAssertTrue(partiallyMockedLink.didCallFinish)
-    }
-
-    func test_run_shouldNotCallFinish_whenDoneIsNotCalled() {
-        callRun()
-        XCTAssertFalse(partiallyMockedLink.didCallFinish)
-    }
     
     // MARK: - finish
     
@@ -73,10 +55,9 @@ class LinkTests: XCTestCase {
 class PartialMockLink<InitialType, ResultType>: Link<InitialType, ResultType> {
 
     var didCallMain = false
-    var done: (() -> ())?
-    override func run(done: () -> ()) {
+    override func run() {
         didCallMain = true
-        self.done = done
+        finish()
     }
 
     var didCallFinish = false
