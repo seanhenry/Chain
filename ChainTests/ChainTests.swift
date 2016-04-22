@@ -41,13 +41,6 @@ class ChainTests: XCTestCase {
         XCTAssertTrue(chain.last.next is BlockLink)
     }
 
-    func test_finally_shouldSetRelationshipWithLink() {
-        let link = Link<String, ()>()
-        chain.finally(link)
-        XCTAssertTrue(chain.last.next === link)
-        XCTAssertTrue(link.previous === chain.last)
-    }
-
     // MARK: - Chain
     
     func test_Chain_canLinkStringLinks() {
