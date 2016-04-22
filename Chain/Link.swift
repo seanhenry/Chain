@@ -18,8 +18,8 @@ public class Link<InitialType, ResultType>: InitialLink<InitialType> {
         next?.run()
     }
 
-    public func finish(error error: ErrorType) {
+    public override func finish(error error: ErrorType) {
         next?.initial = .Failure(error)
-        next?.run()
+        next?.finish(error: error)
     }
 }

@@ -24,4 +24,5 @@ public class InitialLink<InitialType>: RunnableLink {
     public var initial: Result<InitialType, ErrorType> = .Failure(ChainError.NoInitialValue)
     var previous: RunnableLink?
     public func run() { }
+    public func finish(error error: ErrorType) { }
 }

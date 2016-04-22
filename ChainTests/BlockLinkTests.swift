@@ -10,6 +10,7 @@ import XCTest
 class BlockLinkTests: XCTestCase {
 
     var didCallBlock = false
+    var blockResult: Result<String, ErrorType>?
     var didCallDone = false
     var block: ((Result<String, ErrorType>) -> ())!
     var link: BlockLink<String>!
@@ -18,40 +19,32 @@ class BlockLinkTests: XCTestCase {
         super.setUp()
         didCallBlock = false
         didCallDone = false
-        block = { string in
+        block = { result in
+            self.blockResult = result
             self.didCallBlock = true
         }
         link = BlockLink<String>(block: block)
         link.initial = .Success("howdy")
     }
     
-    // MARK: - main
+    // MARK: - run
     
-    func test_main_shouldCallBlock() {
+    func test_run_shouldCallBlock() {
         callRun()
         XCTAssertTrue(didCallBlock)
     }
 
-    func test_main_shouldCallFinish() {
-        let mockedLink = MockBlockLink(block: block)
-        link = mockedLink
-        callRun()
-        XCTAssertTrue(mockedLink.didCallFinish)
+    // MARK: - finish(error:)
+
+    func test_finishError_shouldCallBlockWithError() {
+        link.finish(error: TestError.Some)
+        XCTAssertTrue(didCallBlock)
+        XCTAssertEqual(blockResult?.error as? TestError, TestError.Some)
     }
 
     // MARK: - Helpers
 
     func callRun() {
         link.run()
-    }
-
-    class MockBlockLink: BlockLink<String> {
-        override init(block: (Result<String, ErrorType>) -> ()) {
-            super.init(block: block)
-        }
-        var didCallFinish = false
-        override func finish(result result: ()) {
-            didCallFinish = true
-        }
     }
 }

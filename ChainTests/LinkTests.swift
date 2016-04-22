@@ -41,20 +41,16 @@ class LinkTests: XCTestCase {
     // MARK: - finish(error:)
     
     func test_finishError_shouldPassError() {
-        finish(error: Error.Some)
-        XCTAssertEqual(mockedNext.initial.error as? Error, Error.Some)
+        finish(error: TestError.Some)
+        XCTAssertEqual(mockedNext.initial.error as? TestError, TestError.Some)
     }
 
-    func test_finishError_shouldRunNext() {
-        finish(error: Error.Some)
-        XCTAssertTrue(mockedNext.didCallRun)
+    func test_finishError_shouldFinishNextWithError() {
+        finish(error: TestError.Some)
+        XCTAssertTrue(mockedNext.didCallFinishWithError)
     }
 
     // MARK: - Helpers
-
-    enum Error: ErrorType {
-        case Some
-    }
 
     func finish(result result: Int) {
         link.finish(result: result)
@@ -62,13 +58,5 @@ class LinkTests: XCTestCase {
 
     func finish(error error: ErrorType) {
         link.finish(error: error)
-    }
-}
-
-class MockLink<InitialType, ResultType>: Link<InitialType, ResultType> {
-
-    var didCallRun = false
-    override func run() {
-        didCallRun = true
     }
 }

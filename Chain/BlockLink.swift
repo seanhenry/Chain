@@ -6,15 +6,18 @@
 
 import Swift
 
-class BlockLink<InitialType>: Link<InitialType, ()> {
+class BlockLink<PassedType>: PassiveLink<PassedType> {
 
-    let block: (Result<InitialType, ErrorType> -> ())
-    init(block: (Result<InitialType, ErrorType>) -> ()) {
+    let block: (Result<PassedType, ErrorType> -> ())
+    init(block: (Result<PassedType, ErrorType>) -> ()) {
         self.block = block
     }
 
     override func run() {
         block(initial)
-        finish(result: ())
+    }
+
+    override func finish(error error: ErrorType) {
+        block(.Failure(error))
     }
 }
