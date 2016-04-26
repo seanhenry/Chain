@@ -54,6 +54,9 @@ Chain(IntGenerator<Void>()).then(Add(50)).then(IntToString()).finally { result i
 Chain(IntGenerator<Void>()).then(IntToString()).then(Delay()).finally { result in
     print("Asynchronous: \(result)")
 }.run()
+Chain(IntToString(), initialValue: 999).finally { result in
+    print("Initial Value: \(result)")
+}.run()
 
 enum Error: ErrorType {
     case Error1

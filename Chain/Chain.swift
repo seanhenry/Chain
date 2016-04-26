@@ -14,6 +14,11 @@ public class Chain<InitialType, ResultType>: Runnable {
         self.last = link
     }
 
+    public init(_ link: Link<InitialType, ResultType>, initialValue: InitialType) {
+        link.initial = .Success(initialValue)
+        self.last = link
+    }
+
     public func then<T>(link: Link<ResultType, T>) -> Chain<ResultType, T> {
         link.previous = last
         last.next = link

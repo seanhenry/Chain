@@ -18,6 +18,13 @@ class ChainTests: XCTestCase {
         chain = Chain(first)
     }
 
+    // MARK: - init(link:initialValue:)
+
+    func test_init_shouldPassInitialValue() {
+        let chain = Chain(first, initialValue: "testing")
+        XCTAssertEqual(chain.last.initialValue, "testing")
+    }
+
     // MARK: - findFirst
 
     func test_findFirst_shouldReturnCurrentLink_whenSelfIsFirst() {
