@@ -61,6 +61,38 @@ class ChainTests: XCTestCase {
         waitForExpectationsWithTimeout(5, handler: nil)
     }
 
+    func test_Chain_persistsDuringAsyncOperations() {
+        let e = expectationWithDescription("")
+        weak var _ = Chain(PassString()).then(Async()).finally { _ in
+            e.fulfill()
+        }.run()
+        waitForExpectationsWithTimeout(5, handler: nil)
+    }
+
+    func test_Chain_withPassiveLink_diesOnceOperationsHaveFinished() {
+        var strongLink: PassString? = PassString()
+        weak var weakLink = strongLink
+        Chain(strongLink!).then(PassString()).finally { _ in }.run()
+        strongLink = nil
+        XCTAssertNil(weakLink)
+    }
+
+    func test_Chain_withSuccessfulLink_diesOnceOperationsHaveFinished() {
+        var strongLink: PassString? = PassString()
+        weak var weakLink = strongLink
+        Chain(strongLink!).then(Success()).finally { _ in }.run()
+        strongLink = nil
+        XCTAssertNil(weakLink)
+    }
+
+    func test_Chain_withFailingLink_diesOnceOperationsHaveFinished() {
+        var strongLink: PassString? = PassString()
+        weak var weakLink = strongLink
+        Chain(strongLink!).then(Failure()).finally { _ in }.run()
+        strongLink = nil
+        XCTAssertNil(weakLink)
+    }
+
     // MARK: - run
 
     func test_run_shouldRunFirstLink() {
@@ -95,6 +127,26 @@ class ChainTests: XCTestCase {
 
         override func run() {
             finish()
+        }
+    }
+
+    class Async: PassiveLink<String> {
+
+        override func run() {
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.01) * Int64(NSEC_PER_SEC))
+            dispatch_after(time, dispatch_get_main_queue(), finish)
+        }
+    }
+
+    class Success: Link<String, String> {
+        override func run() {
+            finish(result: "fin")
+        }
+    }
+
+    class Failure: Link<String, String> {
+        override func run() {
+            finish(error: TestError.Some)
         }
     }
 }

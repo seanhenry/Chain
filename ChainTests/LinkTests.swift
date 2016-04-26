@@ -37,6 +37,12 @@ class LinkTests: XCTestCase {
         finish(result: 456)
         XCTAssertTrue(mockedNext.didCallRun)
     }
+
+    func test_finishResult_shouldSetPreviousToNil() {
+        link.previous = link
+        finish(result: 789)
+        XCTAssertNil(link.previous)
+    }
     
     // MARK: - finish(error:)
     
@@ -48,6 +54,12 @@ class LinkTests: XCTestCase {
     func test_finishError_shouldFinishNextWithError() {
         finish(error: TestError.Some)
         XCTAssertTrue(mockedNext.didCallFinishWithError)
+    }
+
+    func test_finishError_shouldSetPreviousToNil() {
+        link.previous = link
+        finish(error: TestError.Some)
+        XCTAssertNil(link.previous)
     }
 
     // MARK: - Helpers

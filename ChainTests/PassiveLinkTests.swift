@@ -38,4 +38,10 @@ class PassiveLinkTests: XCTestCase {
         link.finish()
         XCTAssertTrue(mockedNext.didCallRun)
     }
+
+    func test_finish_shouldSetPreviousToNil() {
+        link.previous = link
+        link.finish()
+        XCTAssertNil(link.previous)
+    }
 }
