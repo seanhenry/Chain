@@ -8,8 +8,8 @@ import Swift
 
 class BlockLink<PassedType>: PassiveLink<PassedType> {
 
-    let block: (Result<PassedType, ErrorType> -> ())
-    init(block: (Result<PassedType, ErrorType>) -> ()) {
+    let block: (ChainResult<PassedType, ErrorType> -> ())
+    init(block: (ChainResult<PassedType, ErrorType>) -> ()) {
         self.block = block
     }
 

@@ -16,12 +16,14 @@
 		14078A7A1CC29B6D00523FB1 /* BlockLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A791CC29B6D00523FB1 /* BlockLink.swift */; };
 		14078A7C1CC29DCB00523FB1 /* ChainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A7B1CC29DCB00523FB1 /* ChainTests.swift */; };
 		14078A7E1CC29E3100523FB1 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14078A7D1CC29E3100523FB1 /* Chain.swift */; };
+		14327C701CCFF67D00FA3689 /* ChainResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14327C6F1CCFF67D00FA3689 /* ChainResultTests.swift */; };
 		14706CB71CC2933500FBD876 /* Chain.h in Headers */ = {isa = PBXBuildFile; fileRef = 14706CB61CC2933500FBD876 /* Chain.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14706CBE1CC2933500FBD876 /* Chain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14706CB31CC2933500FBD876 /* Chain.framework */; };
 		14706CCE1CC2939100FBD876 /* Runnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14706CCD1CC2939100FBD876 /* Runnable.swift */; };
 		14DC6EC71CCAB13A009CB76B /* InitialLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */; };
 		14DC6ECA1CCAC0D9009CB76B /* TestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6EC91CCAC0D9009CB76B /* TestError.swift */; };
 		14DC6ECD1CCAC4C7009CB76B /* MockLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6ECC1CCAC4C7009CB76B /* MockLink.swift */; };
+		14DC6ECF1CCAC5D3009CB76B /* ChainResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6ECE1CCAC5D3009CB76B /* ChainResult.swift */; };
 		14DC6ED11CCAC5E9009CB76B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DC6ED01CCAC5E9009CB76B /* Error.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,7 @@
 		14078A791CC29B6D00523FB1 /* BlockLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockLink.swift; sourceTree = "<group>"; };
 		14078A7B1CC29DCB00523FB1 /* ChainTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainTests.swift; sourceTree = "<group>"; };
 		14078A7D1CC29E3100523FB1 /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
+		14327C6F1CCFF67D00FA3689 /* ChainResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainResultTests.swift; sourceTree = "<group>"; };
 		14706CB31CC2933500FBD876 /* Chain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14706CB61CC2933500FBD876 /* Chain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chain.h; sourceTree = "<group>"; };
 		14706CB81CC2933500FBD876 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialLinkTests.swift; sourceTree = "<group>"; };
 		14DC6EC91CCAC0D9009CB76B /* TestError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestError.swift; sourceTree = "<group>"; };
 		14DC6ECC1CCAC4C7009CB76B /* MockLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLink.swift; sourceTree = "<group>"; };
+		14DC6ECE1CCAC5D3009CB76B /* ChainResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainResult.swift; sourceTree = "<group>"; };
 		14DC6ED01CCAC5E9009CB76B /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,7 @@
 				14078A751CC29AE900523FB1 /* PassiveLink.swift */,
 				14078A791CC29B6D00523FB1 /* BlockLink.swift */,
 				14078A7D1CC29E3100523FB1 /* Chain.swift */,
+				14DC6ECE1CCAC5D3009CB76B /* ChainResult.swift */,
 				14DC6ED01CCAC5E9009CB76B /* Error.swift */,
 			);
 			path = Chain;
@@ -121,6 +126,7 @@
 				14078A771CC29B5E00523FB1 /* BlockLinkTests.swift */,
 				14078A7B1CC29DCB00523FB1 /* ChainTests.swift */,
 				14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */,
+				14327C6F1CCFF67D00FA3689 /* ChainResultTests.swift */,
 			);
 			path = ChainTests;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 				14078A701CC295FA00523FB1 /* Link.swift in Sources */,
 				14078A761CC29AE900523FB1 /* PassiveLink.swift in Sources */,
 				14078A7E1CC29E3100523FB1 /* Chain.swift in Sources */,
+				14DC6ECF1CCAC5D3009CB76B /* ChainResult.swift in Sources */,
 				14078A6E1CC295A800523FB1 /* InitialLink.swift in Sources */,
 				14706CCE1CC2939100FBD876 /* Runnable.swift in Sources */,
 			);
@@ -269,6 +276,7 @@
 				14078A721CC2963100523FB1 /* LinkTests.swift in Sources */,
 				14078A741CC29AD300523FB1 /* PassiveLinkTests.swift in Sources */,
 				14DC6EC71CCAB13A009CB76B /* InitialLinkTests.swift in Sources */,
+				14327C701CCFF67D00FA3689 /* ChainResultTests.swift in Sources */,
 				14DC6ECD1CCAC4C7009CB76B /* MockLink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

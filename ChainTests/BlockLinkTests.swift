@@ -10,9 +10,9 @@ import XCTest
 class BlockLinkTests: XCTestCase {
 
     var didCallBlock = false
-    var blockResult: Result<String, ErrorType>?
+    var blockResult: ChainResult<String, ErrorType>?
     var didCallDone = false
-    var block: ((Result<String, ErrorType>) -> ())!
+    var block: ((ChainResult<String, ErrorType>) -> ())!
     var link: BlockLink<String>!
 
     override func setUp() {
