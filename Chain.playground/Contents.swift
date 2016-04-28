@@ -19,7 +19,7 @@ class MultiplyBy: Link<Int, Int> {
     }
 }
 
-Chain(MultiplyBy(10), initialValue: 15).finally { result in
+Chain(initialValue: 15, MultiplyBy(10)).finally { result in
     print(result) // => 150
 }.run()
 /*:
@@ -35,7 +35,7 @@ class IntToWords: Link<Int, String> {
     }
 }
 
-Chain(MultiplyBy(10), initialValue: 15)
+Chain(initialValue: 15, MultiplyBy(10))
     .then(IntToWords())
     .finally { result in
     print(result) // => "one hundred fifty"
@@ -51,7 +51,7 @@ class Boast<IgnoredType>: PassiveLink<IgnoredType> {
     }
 }
 
-Chain(MultiplyBy(10), initialValue: 15)
+Chain(initialValue: 15, MultiplyBy(10))
     .then(Boast()) // => "I will now convert your number into text."
     .then(IntToWords())
     .finally { result in
@@ -68,7 +68,7 @@ class PauseForEffect<IgnoredType>: PassiveLink<IgnoredType> {
     }
 }
 
-Chain(MultiplyBy(10), initialValue: 15)
+Chain(initialValue: 15, MultiplyBy(10))
     .then(Boast())
     .then(PauseForEffect()) // IntToWords is not called until the pause is finished.
     .then(IntToWords())
@@ -98,7 +98,7 @@ class ICanOnlyCountTo: Link<Int, Int> {
     }
 }
 
-Chain(MultiplyBy(10), initialValue: 15)
+Chain(initialValue: 15, MultiplyBy(10))
     .then(Boast())
     .then(PauseForEffect())
     .then(ICanOnlyCountTo(100))

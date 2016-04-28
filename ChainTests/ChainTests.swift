@@ -21,7 +21,7 @@ class ChainTests: XCTestCase {
     // MARK: - init(link:initialValue:)
 
     func test_init_shouldPassInitialValue() {
-        let chain = Chain(first, initialValue: "testing")
+        let chain = Chain(initialValue: "testing", first)
         XCTAssertEqual(chain.last.initialValue, "testing")
     }
 

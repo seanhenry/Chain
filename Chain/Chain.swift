@@ -14,7 +14,7 @@ public class Chain<InitialType, ResultType>: Runnable {
         self.last = link
     }
 
-    public init(_ link: Link<InitialType, ResultType>, initialValue: InitialType) {
+    public init(initialValue: InitialType, _ link: Link<InitialType, ResultType>) {
         link.initial = .Success(initialValue)
         self.last = link
     }
