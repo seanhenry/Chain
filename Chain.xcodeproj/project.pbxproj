@@ -83,8 +83,8 @@
 		14706CA91CC2933500FBD876 = {
 			isa = PBXGroup;
 			children = (
-				14706CB51CC2933500FBD876 /* Chain */,
-				14706CC11CC2933500FBD876 /* ChainTests */,
+				14706CB51CC2933500FBD876 /* Sources */,
+				14706CC11CC2933500FBD876 /* Tests */,
 				14706CB41CC2933500FBD876 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,7 +98,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		14706CB51CC2933500FBD876 /* Chain */ = {
+		14706CB51CC2933500FBD876 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				14706CB61CC2933500FBD876 /* Chain.h */,
@@ -112,10 +112,10 @@
 				14DC6ECE1CCAC5D3009CB76B /* ChainResult.swift */,
 				14DC6ED01CCAC5E9009CB76B /* Error.swift */,
 			);
-			path = Chain;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		14706CC11CC2933500FBD876 /* ChainTests */ = {
+		14706CC11CC2933500FBD876 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				14DC6EC81CCAC0D0009CB76B /* Helpers */,
@@ -128,7 +128,7 @@
 				14DC6EC61CCAB13A009CB76B /* InitialLinkTests.swift */,
 				14327C6F1CCFF67D00FA3689 /* ChainResultTests.swift */,
 			);
-			path = ChainTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		14DC6EC81CCAC0D0009CB76B /* Helpers */ = {
@@ -391,7 +391,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Chain/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.Chain;
@@ -409,7 +409,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Chain/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.Chain;
@@ -421,7 +421,7 @@
 		14706CCB1CC2933500FBD876 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = ChainTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.ChainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -431,7 +431,7 @@
 		14706CCC1CC2933500FBD876 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = ChainTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.ChainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
