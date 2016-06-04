@@ -1,6 +1,12 @@
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Swift Package Manager Compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-4BC51D.svg?style=flat)
+![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)
+![Swift 3.0](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)
 # Chain
 A Swift library for linking tasks together and passing data between those tasks.  
+## Swift 3 and Package Manager
+Checkout `swift-3` branch for Swift 3 and package manager support.
 ## Playground
 See the embedded playground for a working example. Open the workspace and build the framework before running the playground.
 
