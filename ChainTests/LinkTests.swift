@@ -68,7 +68,7 @@ class LinkTests: XCTestCase {
         link.finish(result: result)
     }
 
-    func finish(error error: ErrorType) {
+    func finish(error error: ErrorProtocol) {
         link.finish(error: error)
     }
 }

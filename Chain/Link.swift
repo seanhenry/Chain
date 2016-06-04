@@ -8,18 +8,18 @@ import Foundation
 
 public class Link<InitialType, ResultType>: InitialLink<InitialType> {
 
-    var result: ChainResult<ResultType, ErrorType> = .Failure(Error.NoResultValue)
+    var result: ChainResult<ResultType, ErrorProtocol> = .Failure(Error.NoResultValue)
     var next: InitialLink<ResultType>?
 
     public override init() {}
 
-    public func finish(result result: ResultType) {
+    public func finish(result: ResultType) {
         previous = nil
         next?.initial = .Success(result)
         next?.run()
     }
 
-    public override func finish(error error: ErrorType) {
+    public override func finish(error: ErrorProtocol) {
         previous = nil
         next?.initial = .Failure(error)
         next?.finish(error: error)

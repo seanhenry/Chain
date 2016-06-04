@@ -10,7 +10,7 @@ public class PassiveLink<PassedType>: Link<PassedType, PassedType> {
 
     public override init() {}
 
-    override public var initial: ChainResult<PassedType, ErrorType> {
+    override public var initial: ChainResult<PassedType, ErrorProtocol> {
         didSet {
             result = initial
         }

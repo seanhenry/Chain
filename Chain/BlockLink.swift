@@ -8,8 +8,8 @@ import Swift
 
 class BlockLink<PassedType>: PassiveLink<PassedType> {
 
-    let block: (ChainResult<PassedType, ErrorType> -> ())
-    init(block: (ChainResult<PassedType, ErrorType>) -> ()) {
+    let block: (ChainResult<PassedType, ErrorProtocol> -> ())
+    init(block: (ChainResult<PassedType, ErrorProtocol>) -> ()) {
         self.block = block
     }
 
@@ -17,7 +17,7 @@ class BlockLink<PassedType>: PassiveLink<PassedType> {
         block(initial)
     }
 
-    override func finish(error error: ErrorType) {
+    override func finish(error error: ErrorProtocol) {
         block(.Failure(error))
     }
 }

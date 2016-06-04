@@ -6,9 +6,9 @@
 
 import Foundation
 
-public enum ChainResult<ResultType, ErrorType> {
+public enum ChainResult<ResultType, ErrorProtocol> {
     case Success(ResultType)
-    case Failure(ErrorType)
+    case Failure(ErrorProtocol)
 }
 
 extension ChainResult {
@@ -20,7 +20,7 @@ extension ChainResult {
         return result
     }
 
-    public var error: ErrorType? {
+    public var error: ErrorProtocol? {
         guard case .Failure(let error) = self else {
             return nil
         }
@@ -38,9 +38,9 @@ extension ChainResult where ResultType: Equatable {
     }
 }
 
-extension ChainResult where ErrorType: Equatable {
+extension ChainResult where ErrorProtocol: Equatable {
 
-    public func isFailureWithError(error: ErrorType?) -> Bool {
+    public func isFailureWithError(error: ErrorProtocol?) -> Bool {
         guard case .Failure(let e) = self else {
             return false
         }

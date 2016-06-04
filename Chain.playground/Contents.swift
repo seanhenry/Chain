@@ -78,7 +78,7 @@ Chain(initialValue: 15, MultiplyBy(10))
 /*:
  Tasks can fail. And when they do the error is passed to the end of the Chain and the next links are ignored.
  */
-enum Error: ErrorType {
+enum Error: ErrorProtocol {
     case NumberTooHigh
 }
 

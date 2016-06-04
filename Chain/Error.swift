@@ -6,7 +6,7 @@
 
 import Foundation
 
-public enum Error: ErrorType {
+public enum Error: ErrorProtocol {
     case NoInitialValue
     case NoResultValue
 }
