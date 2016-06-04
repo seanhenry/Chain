@@ -39,8 +39,8 @@ class IntToWords: Link<Int, String> {
 
     override func run() {
         let formatter = NSNumberFormatter()
-        formatter.numberStyle = .SpellOutStyle
-        let result = formatter.stringFromNumber(initialValue)!
+        formatter.numberStyle = .spellOutStyle
+        let result = formatter.string(from: initialValue)!
         finish(result: result)
     }
 }
