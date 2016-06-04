@@ -30,7 +30,7 @@ extension ChainResult {
 
 extension ChainResult where ResultType: Equatable {
 
-    public func isSuccessWithResult(result: ResultType?) -> Bool {
+    public func isSuccess(with result: ResultType?) -> Bool {
         guard case .Success(let r) = self else {
             return false
         }
@@ -40,7 +40,7 @@ extension ChainResult where ResultType: Equatable {
 
 extension ChainResult where ErrorProtocol: Equatable {
 
-    public func isFailureWithError(error: ErrorProtocol?) -> Bool {
+    public func isFailure(with error: ErrorProtocol?) -> Bool {
         guard case .Failure(let e) = self else {
             return false
         }

@@ -30,7 +30,7 @@ class LinkTests: XCTestCase {
 
     func test_finishResult_shouldPassResult() {
         finish(result: 123)
-        XCTAssertTrue(mockedNext.initial.isSuccessWithResult(123))
+        XCTAssertTrue(mockedNext.initial.isSuccess(with: 123))
     }
 
     func test_finishResult_shouldRunNext() {
@@ -64,11 +64,11 @@ class LinkTests: XCTestCase {
 
     // MARK: - Helpers
 
-    func finish(result result: Int) {
+    func finish(result: Int) {
         link.finish(result: result)
     }
 
-    func finish(error error: ErrorProtocol) {
+    func finish(error: ErrorProtocol) {
         link.finish(error: error)
     }
 }

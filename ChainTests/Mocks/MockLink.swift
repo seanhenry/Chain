@@ -15,7 +15,7 @@ class MockLink<InitialType, ResultType>: Link<InitialType, ResultType> {
     }
 
     var didCallFinishWithError = false
-    override func finish(error error: ErrorProtocol) {
+    override func finish(error: ErrorProtocol) {
         didCallFinishWithError = true
     }
 }

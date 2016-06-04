@@ -44,36 +44,36 @@ class ChainTests: XCTestCase {
     // MARK: - finally
 
     func test_finally_shouldSetRelationshipWithBlockLink() {
-        chain.finally { _ in }
+        _ = chain.finally { _ in }
         XCTAssertTrue(chain.last.next is BlockLink)
     }
 
     // MARK: - Chain
     
     func test_Chain_canLinkStringLinks() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(withDescription: #function)
         Chain(TestStringLink()).then(TestStringLink()).finally { result in
             XCTAssertEqual(result.result, "hurrah")
             expectation.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(withTimeout: 5, handler: nil)
     }
 
     func test_Chain_canLinkDifferentTypes_andPassiveLinks() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(withDescription: #function)
         Chain(IntToString(5)).then(PassString()).finally { result in
             XCTAssertEqual(result.result, "5")
             expectation.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(withTimeout: 5, handler: nil)
     }
 
     func test_Chain_persistsDuringAsyncOperations() {
-        let e = expectationWithDescription("")
+        let expectation = self.expectation(withDescription: #function)
         weak var _ = Chain(PassString()).then(Async()).finally { _ in
-            e.fulfill()
+            expectation.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(withTimeout: 5, handler: nil)
     }
 
     func test_Chain_withPassiveLink_diesOnceOperationsHaveFinished() {

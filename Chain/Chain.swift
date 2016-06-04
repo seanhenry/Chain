@@ -19,13 +19,13 @@ public class Chain<InitialType, ResultType>: Runnable {
         self.last = link
     }
 
-    public func then<T>(link: Link<ResultType, T>) -> Chain<ResultType, T> {
+    public func then<T>(_ link: Link<ResultType, T>) -> Chain<ResultType, T> {
         link.previous = last
         last.next = link
         return Chain<ResultType, T>(link)
     }
 
-    public func finally(block: (ChainResult<ResultType, ErrorProtocol>) -> ()) -> Runnable {
+    public func finally(_ block: (ChainResult<ResultType, ErrorProtocol>) -> ()) -> Runnable {
         let blockLink = BlockLink(block: block)
         last.next = blockLink
         return self

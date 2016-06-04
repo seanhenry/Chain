@@ -23,7 +23,7 @@ class PassiveLinkTests: XCTestCase {
     
     func test_initial_shouldSetResult() {
         link.initial = .Success("some")
-        XCTAssertTrue(link.result.isSuccessWithResult(link.initial.result))
+        XCTAssertTrue(link.result.isSuccess(with: link.initial.result))
     }
 
     // MARK: - finish
@@ -31,7 +31,7 @@ class PassiveLinkTests: XCTestCase {
     func test_finish_shouldSetInitialOnNext() {
         link.initial = .Success("hurrah")
         link.finish()
-        XCTAssertTrue(link.next!.initial.isSuccessWithResult(link.result.result))
+        XCTAssertTrue(link.next!.initial.isSuccess(with: link.result.result))
     }
 
     func test_finish_shouldRunNext() {

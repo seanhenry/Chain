@@ -39,43 +39,43 @@ class ChainResultTests: XCTestCase {
 
     func test_isSuccessWithResult_shouldBeFalse_whenResultIsNil() {
         result = .Failure("")
-        XCTAssertFalse(result.isSuccessWithResult(nil))
+        XCTAssertFalse(result.isSuccess(with: nil))
     }
 
     func test_isSuccessWithResult_shouldBeFalse_whenNotSuccess() {
         result = .Failure("")
-        XCTAssertFalse(result.isSuccessWithResult(""))
+        XCTAssertFalse(result.isSuccess(with: ""))
     }
 
     func test_isSuccessWithResult_shouldBeFalse_whenSuccessIsNotEqual() {
         result = .Success("123")
-        XCTAssertFalse(result.isSuccessWithResult("456"))
+        XCTAssertFalse(result.isSuccess(with: "456"))
     }
 
     func test_isSuccessWithResult_shouldBeTrue_whenSuccessIsEqual() {
         result = .Success("123")
-        XCTAssertTrue(result.isSuccessWithResult("123"))
+        XCTAssertTrue(result.isSuccess(with: "123"))
     }
 
     // MARK: - isFailureWithError
 
     func test_isFailureWithError_shouldBeFalse_whenErrorIsNil() {
         result = .Failure("")
-        XCTAssertFalse(result.isFailureWithError(nil))
+        XCTAssertFalse(result.isFailure(with: nil))
     }
 
     func test_isFailureWithError_shouldBeFalse_whenNotFailure() {
         result = .Success("")
-        XCTAssertFalse(result.isFailureWithError(""))
+        XCTAssertFalse(result.isFailure(with: ""))
     }
 
     func test_isFailureWithError_shouldBeFalse_whenFailureIsNotEqual() {
         result = .Failure("123")
-        XCTAssertFalse(result.isFailureWithError("456"))
+        XCTAssertFalse(result.isFailure(with: "456"))
     }
 
     func test_isFailureWithError_shouldBeTrue_whenFailureIsEqual() {
         result = .Failure("123")
-        XCTAssertTrue(result.isFailureWithError("123"))
+        XCTAssertTrue(result.isFailure(with: "123"))
     }
 }
