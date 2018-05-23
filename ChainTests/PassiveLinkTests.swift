@@ -22,14 +22,14 @@ class PassiveLinkTests: XCTestCase {
     // MARK: - initial
     
     func test_initial_shouldSetResult() {
-        link.initial = .Success("some")
+        link.initial = .success("some")
         XCTAssertTrue(link.result.isSuccessWithResult(link.initial.result))
     }
 
     // MARK: - finish
 
     func test_finish_shouldSetInitialOnNext() {
-        link.initial = .Success("hurrah")
+        link.initial = .success("hurrah")
         link.finish()
         XCTAssertTrue(link.next!.initial.isSuccessWithResult(link.result.result))
     }

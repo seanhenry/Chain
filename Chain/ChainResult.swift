@@ -7,21 +7,21 @@
 import Foundation
 
 public enum ChainResult<ResultType, ErrorType> {
-    case Success(ResultType)
-    case Failure(ErrorType)
+    case success(ResultType)
+    case failure(ErrorType)
 }
 
 extension ChainResult {
 
     public var result: ResultType? {
-        guard case .Success(let result) = self else {
+        guard case .success(let result) = self else {
             return nil
         }
         return result
     }
 
     public var error: ErrorType? {
-        guard case .Failure(let error) = self else {
+        guard case .failure(let error) = self else {
             return nil
         }
         return error
@@ -30,8 +30,8 @@ extension ChainResult {
 
 extension ChainResult where ResultType: Equatable {
 
-    public func isSuccessWithResult(result: ResultType?) -> Bool {
-        guard case .Success(let r) = self else {
+    public func isSuccessWithResult(_ result: ResultType?) -> Bool {
+        guard case .success(let r) = self else {
             return false
         }
         return r == result
@@ -40,8 +40,8 @@ extension ChainResult where ResultType: Equatable {
 
 extension ChainResult where ErrorType: Equatable {
 
-    public func isFailureWithError(error: ErrorType?) -> Bool {
-        guard case .Failure(let e) = self else {
+    public func isFailureWithError(_ error: ErrorType?) -> Bool {
+        guard case .failure(let e) = self else {
             return false
         }
         return e == error

@@ -6,7 +6,7 @@
 
 import Foundation
 
-public enum Error: ErrorType {
-    case NoInitialValue
-    case NoResultValue
+public enum ChainError: Swift.Error {
+    case noInitialValue
+    case noResultValue
 }

@@ -6,6 +6,6 @@
 
 import Foundation
 
-enum TestError: ErrorType {
-    case Some
+enum TestError: Error {
+    case some
 }

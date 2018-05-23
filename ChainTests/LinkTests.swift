@@ -23,7 +23,7 @@ class LinkTests: XCTestCase {
 
     func test_result_shouldBeNoResultTypeError() {
         let link = Link<String, String>()
-        XCTAssertEqual(link.result.error as? Error, .NoResultValue)
+        XCTAssertEqual(link.result.error as? ChainError, .noResultValue)
     }
 
     // MARK: - finish(result:)
@@ -47,28 +47,28 @@ class LinkTests: XCTestCase {
     // MARK: - finish(error:)
     
     func test_finishError_shouldPassError() {
-        finish(error: TestError.Some)
-        XCTAssertEqual(mockedNext.initial.error as? TestError, TestError.Some)
+        finish(error: TestError.some)
+        XCTAssertEqual(mockedNext.initial.error as? TestError, TestError.some)
     }
 
     func test_finishError_shouldFinishNextWithError() {
-        finish(error: TestError.Some)
+        finish(error: TestError.some)
         XCTAssertTrue(mockedNext.didCallFinishWithError)
     }
 
     func test_finishError_shouldSetPreviousToNil() {
         link.previous = link
-        finish(error: TestError.Some)
+        finish(error: TestError.some)
         XCTAssertNil(link.previous)
     }
 
     // MARK: - Helpers
 
-    func finish(result result: Int) {
+    func finish(result: Int) {
         link.finish(result: result)
     }
 
-    func finish(error error: ErrorType) {
+    func finish(error: Error) {
         link.finish(error: error)
     }
 }

@@ -1,3 +1,4 @@
+import Foundation
 import Chain
 /*: 
  # Chain
@@ -28,9 +29,9 @@ Chain(initialValue: 15, MultiplyBy(10)).finally { result in
 class IntToWords: Link<Int, String> {
 
     override func run() {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .SpellOutStyle
-        let result = formatter.stringFromNumber(initialValue)!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+        let result = formatter.string(from: initialValue as NSNumber!)!
         finish(result: result)
     }
 }
@@ -63,8 +64,7 @@ Chain(initialValue: 15, MultiplyBy(10))
 class PauseForEffect<IgnoredType>: PassiveLink<IgnoredType> {
 
     override func run() {
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5) * Int64(NSEC_PER_SEC))
-        dispatch_after(time, dispatch_get_main_queue(), finish)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: finish)
     }
 }
 
@@ -78,7 +78,7 @@ Chain(initialValue: 15, MultiplyBy(10))
 /*:
  Tasks can fail. And when they do the error is passed to the end of the Chain and the next links are ignored.
  */
-enum Error: ErrorType {
+enum MyError: Error {
     case NumberTooHigh
 }
 
@@ -93,7 +93,7 @@ class ICanOnlyCountTo: Link<Int, Int> {
         if initialValue < max {
             finish(result: initialValue)
         } else {
-            finish(error: Error.NumberTooHigh)
+            finish(error: MyError.NumberTooHigh)
         }
     }
 }
@@ -104,7 +104,7 @@ Chain(initialValue: 15, MultiplyBy(10))
     .then(ICanOnlyCountTo(100))
     .then(IntToWords())
     .finally { result in
-    print(result) // => Error.NumberTooHigh
+    print(result) // => MyError.NumberTooHigh
 }.run()
 
-NSRunLoop.mainRunLoop().runUntilDate(NSDate(timeIntervalSinceNow: 2))
+RunLoop.main.run(until: Date(timeIntervalSinceNow: 2))

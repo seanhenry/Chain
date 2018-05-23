@@ -6,17 +6,17 @@
 
 import Swift
 
-public class PassiveLink<PassedType>: Link<PassedType, PassedType> {
+open class PassiveLink<PassedType>: Link<PassedType, PassedType> {
 
     public override init() {}
 
-    override public var initial: ChainResult<PassedType, ErrorType> {
+    override open var initial: ChainResult<PassedType, Swift.Error> {
         didSet {
             result = initial
         }
     }
 
-    public func finish() {
+    open func finish() {
         previous = nil
         next?.initial = result
         next?.run()

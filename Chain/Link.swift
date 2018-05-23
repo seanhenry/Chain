@@ -6,22 +6,22 @@
 
 import Foundation
 
-public class Link<InitialType, ResultType>: InitialLink<InitialType> {
+open class Link<InitialType, ResultType>: InitialLink<InitialType> {
 
-    var result: ChainResult<ResultType, ErrorType> = .Failure(Error.NoResultValue)
+    var result: ChainResult<ResultType, Swift.Error> = .failure(ChainError.noResultValue)
     var next: InitialLink<ResultType>?
 
     public override init() {}
 
-    public func finish(result result: ResultType) {
+    open func finish(result: ResultType) {
         previous = nil
-        next?.initial = .Success(result)
+        next?.initial = .success(result)
         next?.run()
     }
 
-    public override func finish(error error: ErrorType) {
+    open override func finish(error: Error) {
         previous = nil
-        next?.initial = .Failure(error)
+        next?.initial = .failure(error)
         next?.finish(error: error)
     }
 }

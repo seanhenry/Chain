@@ -10,9 +10,9 @@ import XCTest
 class BlockLinkTests: XCTestCase {
 
     var didCallBlock = false
-    var blockResult: ChainResult<String, ErrorType>?
+    var blockResult: ChainResult<String, Swift.Error>?
     var didCallDone = false
-    var block: ((ChainResult<String, ErrorType>) -> ())!
+    var block: ((ChainResult<String, Swift.Error>) -> ())!
     var link: BlockLink<String>!
 
     override func setUp() {
@@ -24,7 +24,7 @@ class BlockLinkTests: XCTestCase {
             self.didCallBlock = true
         }
         link = BlockLink<String>(block: block)
-        link.initial = .Success("howdy")
+        link.initial = .success("howdy")
     }
     
     // MARK: - run
@@ -37,9 +37,9 @@ class BlockLinkTests: XCTestCase {
     // MARK: - finish(error:)
 
     func test_finishError_shouldCallBlockWithError() {
-        link.finish(error: TestError.Some)
+        link.finish(error: TestError.some)
         XCTAssertTrue(didCallBlock)
-        XCTAssertEqual(blockResult?.error as? TestError, TestError.Some)
+        XCTAssertEqual(blockResult?.error as? TestError, TestError.some)
     }
 
     // MARK: - Helpers

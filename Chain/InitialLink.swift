@@ -6,13 +6,13 @@
 
 import Swift
 
-public class InitialLink<InitialType>: RunnableLink {
+open class InitialLink<InitialType>: RunnableLink {
 
-    public var initialValue: InitialType! {
+    open var initialValue: InitialType! {
         return initial.result
     }
-    var initial: ChainResult<InitialType, ErrorType> = .Failure(Error.NoInitialValue)
+    var initial: ChainResult<InitialType, Swift.Error> = .failure(ChainError.noInitialValue)
     var previous: RunnableLink?
-    public func run() { }
-    public func finish(error error: ErrorType) { }
+    open func run() { }
+    open func finish(error: Error) { }
 }

@@ -44,36 +44,36 @@ class ChainTests: XCTestCase {
     // MARK: - finally
 
     func test_finally_shouldSetRelationshipWithBlockLink() {
-        chain.finally { _ in }
+        _ = chain.finally { _ in }
         XCTAssertTrue(chain.last.next is BlockLink)
     }
 
     // MARK: - Chain
     
     func test_Chain_canLinkStringLinks() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         Chain(TestStringLink()).then(TestStringLink()).finally { result in
             XCTAssertEqual(result.result, "hurrah")
             expectation.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func test_Chain_canLinkDifferentTypes_andPassiveLinks() {
-        let expectation = expectationWithDescription("")
+        let expectation = self.expectation(description: "")
         Chain(IntToString(5)).then(PassString()).finally { result in
             XCTAssertEqual(result.result, "5")
             expectation.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func test_Chain_persistsDuringAsyncOperations() {
-        let e = expectationWithDescription("")
+        let e = expectation(description: "")
         weak var _ = Chain(PassString()).then(Async()).finally { _ in
             e.fulfill()
         }.run()
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
     func test_Chain_withPassiveLink_diesOnceOperationsHaveFinished() {
@@ -121,7 +121,7 @@ class ChainTests: XCTestCase {
 
         init(_ value: Int) {
             super.init()
-            initial = .Success(value)
+            initial = .success(value)
         }
 
         override func run() {
@@ -140,8 +140,8 @@ class ChainTests: XCTestCase {
     class Async: PassiveLink<String> {
 
         override func run() {
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(0.01) * Int64(NSEC_PER_SEC))
-            dispatch_after(time, dispatch_get_main_queue(), finish)
+            let time = DispatchTime.now() + Double(Int64(0.01) * Int64(NSEC_PER_SEC)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: time, execute: finish)
         }
     }
 
@@ -153,7 +153,7 @@ class ChainTests: XCTestCase {
 
     class Failure: Link<String, String> {
         override func run() {
-            finish(error: TestError.Some)
+            finish(error: TestError.some)
         }
     }
 }
