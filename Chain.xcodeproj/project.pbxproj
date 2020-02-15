@@ -219,11 +219,11 @@
 			};
 			buildConfigurationList = 14706CAD1CC2933500FBD876 /* Build configuration list for PBXProject "Chain" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = 14706CA91CC2933500FBD876;
 			productRefGroup = 14706CB41CC2933500FBD876 /* Products */;
